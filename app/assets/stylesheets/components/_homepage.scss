@@ -8,11 +8,19 @@
   background-size: cover;
   display: flex;
   flex-direction: column;
-  // justify-content: center;
+  justify-content: center;
   align-items: center;
   h1 {
     color: $white;
     margin-bottom: 50px;
-
+    font-size: 64px;
   }
+}
+
+.bg {
+  background-color: #011627;
+
+   h1 {
+    font-size: 44px;
+   }
 }

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :occasions, only: %i[index show]
+
+  get 'services', to: "pages#services"
 end

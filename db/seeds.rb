@@ -21,6 +21,10 @@ boite_de_vitesse = ["Manuelle", "Automatique"]
 # faire un hash clé valeur avec la puissance fiscale en clé et la puissance chevaux en valeur
 # puissance_chevaux = [100, 120, 130]
 # puissance_fiscale = puissance_chevaux == 100 ? 5 : 6
+puissances = { puissance_chevaux: [100, 120, 130], puissance_fiscale: [5, 6] }
+
+
+
 
 data_marques = [
   {
@@ -66,6 +70,16 @@ data_marques.each do |info_marque|
           "Garantie 6 mois"
         else
           "Garantie 8 mois"
+        end
+
+      puissance_chevaux = puissance[:puissance_chevaux].sample
+
+      puissance_fiscale =
+        case puissance_chevaux
+        when 100
+          puissances[:puissance_fiscale][0]
+        when 120 || 130
+          puissances[:puissance_fiscale][1]
         end
 
       Car.create!(

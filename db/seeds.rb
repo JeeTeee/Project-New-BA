@@ -18,33 +18,27 @@ prix_random += 1000 - 10
 energies = ["Diesel", "Essence"]
 couleurs = ["NOIR", "GRIS", "BLANC", "ROUGE", "BLEU", "VERT", "JAUNE"]
 boite_de_vitesse = ["Manuelle", "Automatique"]
-# faire un hash clé valeur avec la puissance fiscale en clé et la puissance chevaux en valeur
-# puissance_chevaux = [100, 120, 130]
-# puissance_fiscale = puissance_chevaux == 100 ? 5 : 6
 puissances = { puissance_chevaux: [100, 120, 130], puissance_fiscale: [5, 6] }
-
-
-
 
 data_marques = [
   {
     marque:"Peugeot",
-    modeles: ["208", "308", "2008", "3008", "5008", "508", "Rifter"],
-    versions: ["Allure", "Active", "Style", "GT Line", "Roadtrip", "GT"]
+    modeles: ["208", "308", "2008", "3008", "5008", "508"],
+    versions: ["Allure", "Active", "Style", "GT Line", "GT"]
   },
   {
     marque:"Citroën",
-    modeles: ["C1", "C3", "C3 Aircross", "C4 Cactus", "C4 SpaceTourer", "C5 Aircross"],
+    modeles: ["C1", "C3", "C3 Aircross", "C4 Cactus", "C5 Aircross"],
     versions: ["Live", "Feel", "Shine", "Business", "Urban Ride"]
   },
   {
     marque:"Renault",
-    modeles: ["Clio", "Captur", "Megane", "Scenic", "Kadjar", "Talisman", "Espace", "Koleos"],
-    versions: ["Life", "Zen", "Intens", "Business", "Limited", "Série Limitée"]
+    modeles: ["Clio", "Captur", "Scenic", "Kadjar"],
+    versions: ["Life", "Zen", "Intens", "Business", "Limited"]
   },
   {
     marque:"Volkswagen",
-    modeles: ["Polo", "Golf", "T-Roc", "T-Cross", "Tiguan", "Touran", "Sharan", "Passat", "Arteon"],
+    modeles: ["Polo", "Golf", "T-Roc", "Tiguan", "Touran"],
     versions: ["Trendline", "Confortline", "Carat", "Business", "R-Line"]
   }
 ]
@@ -52,7 +46,10 @@ data_marques = [
 max = 10
 count = 0
 
-data_marques.each do |info_marque|
+# voir pour créer une boucle qui sélectionne une marque aléatoirement à chaque itération
+# data_marques.shuffle!
+
+data_marques.shuffle!.each do |info_marque|
   marque = info_marque[:marque]
   modeles = info_marque[:modeles]
   versions = info_marque[:versions]
@@ -72,13 +69,13 @@ data_marques.each do |info_marque|
           "Garantie 8 mois"
         end
 
-      puissance_chevaux = puissance[:puissance_chevaux].sample
+      puissance_chevaux = puissances[:puissance_chevaux].sample
 
       puissance_fiscale =
         case puissance_chevaux
         when 100
           puissances[:puissance_fiscale][0]
-        when 120 || 130
+        when 120, 130
           puissances[:puissance_fiscale][1]
         end
 
@@ -92,7 +89,7 @@ data_marques.each do |info_marque|
         genre: "Véhicule Particulier",
         energie: energies.sample,
         kilometrage: rand(10..120_000),
-        puissance_chevaux: puissance_chevaux.sample,
+        puissance_chevaux: puissance_chevaux,
         puissance_fiscale: puissance_fiscale,
         nb_places: 5,
         nb_portes: 5,

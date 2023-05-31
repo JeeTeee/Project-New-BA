@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :occasions, only: %i[index show]
 
   get 'services', to: "pages#services"
+  get 'concessions', to: "pages#concessions"
+  get 'nouveautes', to: "pages#nouveautes"
 end

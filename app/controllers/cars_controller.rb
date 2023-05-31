@@ -1,4 +1,6 @@
 class CarsController < ApplicationController
+  # On ne demande pas d'authentification pour accéder à la page index
+  # Pas de methodes new et create celà pourrait être implémenté plus tard
 
   def index
     @cars = Car.all

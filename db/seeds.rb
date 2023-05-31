@@ -1,10 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require 'date'
 
 puts "Nettoyage de la DB..."
 
@@ -85,7 +79,7 @@ data_marques.shuffle!.each do |info_marque|
         version: version,
         annee: annee,
         prix: prix_random,
-        date_mise_en_circulation: "15/10/2019",
+        date_mise_en_circulation: "#{rand(1..30)}/#{rand(1..12)}/#{annee}",
         genre: "Véhicule Particulier",
         energie: energies.sample,
         kilometrage: rand(10..120_000),

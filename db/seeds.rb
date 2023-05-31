@@ -17,7 +17,7 @@ puissances = { puissance_chevaux: [100, 120, 130], puissance_fiscale: [5, 6] }
 data_marques = [
   {
     marque:"Peugeot",
-    modeles: ["208", "308", "2008", "3008", "5008", "508"],
+    modeles: ["208", "308", "2008", "3008", "5008"],
     versions: ["Allure", "Active", "Style", "GT Line", "GT"]
   },
   {
@@ -37,13 +37,13 @@ data_marques = [
   }
 ]
 
-max = 10
+max = 30
 count = 0
 
 # voir pour créer une boucle qui sélectionne une marque aléatoirement à chaque itération
 # data_marques.shuffle!
 
-data_marques.shuffle!.each do |info_marque|
+data_marques.each do |info_marque|
   marque = info_marque[:marque]
   modeles = info_marque[:modeles]
   versions = info_marque[:versions]
@@ -61,6 +61,13 @@ data_marques.shuffle!.each do |info_marque|
           "Garantie 6 mois"
         else
           "Garantie 8 mois"
+        end
+
+      categorie =
+        if modele == "208" || modele == "308" || modele == "C3" || modele == "C1" || modele == "Polo" || modele == "Clio"
+          "CITADINE"
+        elsif modele == "2008" || modele == "3008" || modele == "5008" || modele == "C3 Aircross" || modele == "C4 Cactus" || modele == "T-Roc" || modele == "Tiguan"
+          "SUV"
         end
 
       puissance_chevaux = puissances[:puissance_chevaux].sample
@@ -91,7 +98,7 @@ data_marques.shuffle!.each do |info_marque|
         boite_de_vitesse: "Boite #{boite_de_vitesse.sample}",
         nb_rapports: 6,
         garantie: garantie,
-        categorie: "TOUT-TERRAIN"
+        categorie: categorie
       )
 
       count += 1
